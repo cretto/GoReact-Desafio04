@@ -58,7 +58,7 @@ class Home extends Component {
     return (
       <ProductList>
         {products.data.map(product => (
-          <Product key={product.id}>
+          <Product key={product.id} to={`/products/${product.id}`}>
             <img src={product.image} alt={product.name} />
             <Info>
               <strong>{product.name}</strong>

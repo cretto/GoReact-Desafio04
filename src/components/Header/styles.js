@@ -8,7 +8,9 @@ export const Container = styled.div`
 `;
 
 export const Logo = styled.div`
-  color: #ff9696;
+  h1 {
+    color: #ff9696;
+  }
 `;
 
 export const Cart = styled.div`

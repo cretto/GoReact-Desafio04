@@ -32,7 +32,7 @@ class Navbar extends Component {
       <Container>
         {categories.data.map(category => (
           <Category key={category.id} selected={categories.selected === category.id.toString()}>
-            <Link to={`/category/${category.id}`}>{category.title}</Link>
+            <Link to={`/categories/${category.id}`}>{category.title}</Link>
           </Category>
         ))}
       </Container>

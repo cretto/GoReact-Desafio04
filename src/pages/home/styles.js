@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { Link } from 'react-router-dom';
+
 export const ProductList = styled.ul`
   display: flex;
   flex-wrap: wrap;
@@ -7,7 +9,7 @@ export const ProductList = styled.ul`
   list-style: none;
 `;
 
-export const Product = styled.li`
+export const Product = styled(Link)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;

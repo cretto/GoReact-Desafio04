@@ -1,11 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Container, Logo, Cart } from './styles';
 
 const Header = () => (
   <Container>
     <Logo>
-      <h1>GoCommerce</h1>
+      <Link to="/">
+        <h1>GoCommerce</h1>
+      </Link>
     </Logo>
     <Cart>
       <i className="fa fa-shopping-cart" aria-hidden="true" />
