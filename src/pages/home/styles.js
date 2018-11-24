@@ -17,7 +17,7 @@ export const Product = styled(Link)`
 
   flex: 0 1 calc(25% - 15px);
   height: 300px;
-  border: 1px solid #b3b3b3;
+  border: 1px solid #dcdada;
   padding: 30px 20px;
   border-radius: 5px;
   margin: 20px 10px 0;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.ul`
   display: flex;
   padding: 20px;
-  margin-top: 30px;
+  margin-top: 20px;
 
   background: #ff9696;
   list-style: none;
@@ -15,7 +15,7 @@ export const Category = styled.li`
   font-weight: ${props => (props.selected ? 'bolder' : 'normal')};
   text-transform: uppercase;
   padding: 0 10px;
-  font-size: 12px;
+  font-size: 14px;
 
   a {
     color: inherit;

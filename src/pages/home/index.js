@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Creators as ProductsActions } from '../../store/ducks/products';
+import { Creators as CategoriesActions } from '../../store/ducks/categories';
+
+import Loading from '../../components/Loading';
 
 import {
   ProductList, Product, Info, Price,
@@ -28,6 +31,7 @@ class Home extends Component {
         }),
       ),
     }).isRequired,
+    setCategory: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
@@ -49,25 +53,34 @@ class Home extends Component {
         params: { id },
       },
       getProductsRequest,
+      setCategory,
     } = this.props;
     getProductsRequest(id);
+    setCategory(id);
   };
+
+  renderProductList = products => (
+    <ProductList>
+      {products.map(product => (
+        <Product key={product.id} to={`/products/${product.id}`}>
+          <img src={product.image} alt={product.name} />
+          <Info>
+            <strong>{product.name}</strong>
+            {product.brand}
+          </Info>
+          <Price>{`R$ ${product.price}`}</Price>
+        </Product>
+      ))}
+    </ProductList>
+  );
 
   render() {
     const { products } = this.props;
     return (
-      <ProductList>
-        {products.data.map(product => (
-          <Product key={product.id} to={`/products/${product.id}`}>
-            <img src={product.image} alt={product.name} />
-            <Info>
-              <strong>{product.name}</strong>
-              {product.brand}
-            </Info>
-            <Price>{`R$ ${product.price}`}</Price>
-          </Product>
-        ))}
-      </ProductList>
+      <Fragment>
+        {products.loading && <Loading />}
+        {!products.loading && this.renderProductList(products.data)}
+      </Fragment>
     );
   }
 }
@@ -76,7 +89,13 @@ const mapStateToProps = state => ({
   products: state.products,
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators(ProductsActions, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators(
+  {
+    ...ProductsActions,
+    ...CategoriesActions,
+  },
+  dispatch,
+);
 
 export default connect(
   mapStateToProps,

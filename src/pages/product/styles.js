@@ -13,7 +13,7 @@ export const Image = styled.div`
 
   img {
     width: 250px;
-    height: 400px;
+    height: 350px;
   }
 `;
 
@@ -39,7 +39,7 @@ export const Detail = styled.div`
 export const Actions = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 150px;
+  margin-top: 100px;
 
   strong {
     color: #37bea9;
@@ -50,7 +50,7 @@ export const Actions = styled.div`
   button {
     margin-top: 10px;
     background: #37bea9;
-    height: 40px;
+    height: 50px;
     border: 0;
     border-radius: 5px;
     color: #fff;
